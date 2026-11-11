@@ -108,20 +108,18 @@ The reservoir operates on temporal spike dynamics rather than directly learning 
 ---
 
 ## 04 — Why Liquid State Machines?
+Traditional neural networks learn both feature extraction and classification together. A Liquid State Machine (LSM) takes a different approach by separating these two processes.
 
-A conventional neural network jointly learns the feature representation and the final classifier. In contrast, an LSM separates these two functions.
+The reservoir consists of a recurrent spiking neural network that transforms incoming spike patterns into dynamic activity states. Since its response is influenced by both current and past inputs, it can capture temporal patterns and retain short-term information about previous events.
 
-The **reservoir** is a recurrent spiking network that dynamically processes incoming spikes. Its activity depends not only on the current input but also on previous inputs, allowing it to capture temporal dependencies and provide short-term memory.
+The readout layer uses these reservoir states to make the final classification. Unlike conventional end-to-end training approaches, the reservoir does not need backpropagation-based optimization. Instead, only the readout classifier is trained, making the learning process simpler and computationally efficient.
 
-The **readout layer** receives the reservoir state and performs the final classification. In this project, the reservoir itself does not require backpropagation-based training; only lightweight readout classifiers are trained.
-
-This makes the architecture attractive for studying the combination of:
-
-- temporal signal representation,
-- sparse event-driven computation,
-- low training cost,
-- hardware-oriented neuromorphic processing,
-- and energy-efficient inference.
+The LSM architecture is particularly useful for exploring:
+- Temporal feature extraction from time-dependent signals.
+- Sparse, event-driven computation through spiking neural activity.
+- Reduced training complexity by avoiding reservoir-level backpropagation.
+- Neuromorphic hardware compatibility for brain-inspired computing systems.
+- Energy-efficient inference through sparse and low-power processing
 
 ---
 
